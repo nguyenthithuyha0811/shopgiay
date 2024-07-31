@@ -1,0 +1,7 @@
+.vs/
+Bin/
+bin/
+obj/
+ErrorLogs/
+*.user
+sale-platform-order-api/Data/MasterData.json

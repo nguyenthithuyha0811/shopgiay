@@ -1,0 +1,110 @@
+﻿@model BanGiay.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper p-2">
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Thêm loại sản phẩm</h3>
+                <div class="card-tools">
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-sm btn-danger">Trở về</a>
+                </div>
+                
+                </div>
+                <div class="card-body">
+                    <div class="form-horizontal">
+                        <h4>Product</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-7">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label>Tên sản phẩm</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Chi tiết</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.MetaDesc, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MetaDesc, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Từ khóa</label>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.MetaKey, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MetaKey, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Từ khóa</label>
+                                    @Html.DropDownListFor(model => model.Status, new[] {
+                                        new SelectListItem { Text = "Xuất bản", Value = "1" },
+                                        new SelectListItem { Text = "Chưa xuất bản", Value = "2" }
+                                    }, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Chủ đề cha</label>
+                                    @Html.DropDownListFor(model => model.CatId, (SelectList)ViewBag.ListCat, "[Chọn chủ đề]", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CatId, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Số lượng</label>
+                                    @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Giá</label>
+                                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Giá khuyến mãi</label>
+                                    @Html.EditorFor(model => model.PriceSale, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PriceSale, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Hình đại diện</label>
+                                    <input type="file" name="img" class="form-control" />
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button type="submit" class="btn btn-sm btn-success"> Thêm </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        </div>
+                        <!-- /.card -->
+</section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+}

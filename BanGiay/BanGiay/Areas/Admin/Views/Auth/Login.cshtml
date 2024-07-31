@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .khung {
+            margin: auto;
+            max-width: 600px;
+            min-height: 300px;
+            border: 1px solid #808080;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="khung mt-md-5 p-3 bg-light" >
+                        <h3 class="text-center text-danger">ĐĂNG NHẬP HỆ THỐNG</h3>
+                        <div class="form-group">
+                            <label style="color: blue;">Tên đăng nhập(*)</label>
+                            <input name="username" type="text" required class="form-control" placeholder="Tên đăng nhập hoặc email" />
+                        </div>
+                        <div class="form-group">
+                            <label style="color: red">Mật khẩu(*)</label>
+                            <input name="password" type="password" required class="form-control" placeholder="Mật khẩu" />
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-success">ĐĂNG NHẬP</button>
+                        </div>
+                        @ViewBag.Error
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }    
+</body>
+</html>
